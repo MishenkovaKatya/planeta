@@ -4,6 +4,24 @@ html,body {
 	margin: 0;
 	padding: 0;
 }
+table {
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    table-layout: fixed;
+    width: 100%; /* Ширина таблицы */
+}
+th{ 
+    background: black; /* Цвет фона ячейки */
+    text-align: left; /* Выравнивание по левому краю */
+}
+td{
+   	word-wrap:break-word;
+    background: #fff; /* Цвет фона ячеек */
+    text-align: center; /* Выравнивание по центру */
+}
+th,td{
+    border: 1px solid black; /* Параметры рамки */
+    padding: 1px; /* Поля вокруг текста */
+}
 #header {
 	width: 100%;
 	height: 20%;
@@ -34,7 +52,7 @@ html,body {
 	height: 80%;
 }
 
-/*stratege-map*/
+/*Stratege-map*/
 #stratege-map, 
 #bsc, 
 #graph, 
@@ -105,7 +123,7 @@ html,body {
 	background: #C93834;
 }
 
-/*bsc*/
+/*BSC*/
 #bsc header {
 	height: 32px;
 }
@@ -180,6 +198,8 @@ html,body {
 #bsc .active {
 	display: block;
 }
+
+/*Graph form*/
 #form1 {
   width: 15%;
   display: inline-block;
