@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Катё - тест</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css?ver=201906010143">
+	<script src="js/script.js?$$REVISION$$"></script>
+	<script src="js/echarts.min.js"></script>
+	<script src="js/ss.js"></script>
+	<script src="js/es.js"></script>
+	<script src="js/nk.js"></script>
+</head>
+
+<body>
+
+<style type="text/css">
+   TABLE {
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    table-layout: fixed;
+    width: 100%; /* Ширина таблицы */
+   }
+   TH { 
+    background: black; /* Цвет фона ячейки */
+    text-align: left; /* Выравнивание по левому краю */
+   }
+   TD {
+   	word-wrap:break-word;
+    background: #fff; /* Цвет фона ячеек */
+    text-align: center; /* Выравнивание по центру */
+   }
+   TH, TD {
+    border: 1px solid black; /* Параметры рамки */
+    padding: 1px; /* Поля вокруг текста */
+   }
+  </style>
+
+<div id="header">
+	<div id="load-header">
+		<h1>
+			Загрузка данных | 
+			<span>Стратегическая карта</span> |
+			<span>ССП</span> |
+			<span>Таблица данных</span>
+		</h1>
+	</div>
+	<div id="stratege-map-header">
+		<h1>
+			<span class="hover" onclick="turnOnLoad()">Загрузка новых данных</span> | 
+			Стратегическая карта | 
+			<span class="hover" onclick="turnOnBSC()">ССП</span> |
+			<span class="hover" onclick="turnOnDataTable()">Таблица данных</span>
+		</h1>
+	</div>
+	<div id="bsc-header">
+		<h1>
+			<span class="hover" onclick="turnOnLoad()">Загрузка новых данных</span> |
+			<span class="hover" onclick="turnOnStrategeMap()">Стратегическая карта</span> |
+			ССП |
+			<span class="hover" onclick="turnOnDataTable()">Таблица данных</span>
+		</h1>
+	</div>
+	<div id="graph-header">
+		<h1>
+			<span class="hover" onclick="turnOnBSC()">< Вернуться к ССП</span> |
+			<span class="boldAndBlack" id="graph-header-graphName"></span>
+		</h1>
+		<h2></h2>
+	</div>
+	<div id="data-table-header">
+		<h1>
+			<span class="hover" onclick="turnOnLoad()">Загрузка новых данных</span> |
+			<span class="hover" onclick="turnOnStrategeMap()">Стратегическая карта</span> |
+			<span class="hover" onclick="turnOnBSC()">ССП</span> |
+			Таблица данных
+		</h1>
+	</div>
+</div>
+
+<div id="base">
+	<div id="load">
+		<p id="loadData">
+			Загрузить Data.csv: <input type="file" id="data-input" />
+		</p>
+		<p id="loadDataSuc" style="display: none;">
+			Файл Data.csv успешно загружен!
+		</p>
+		<p id="loadBSC" style="display: none;">
+			Загрузить BSC.csv: <input type="file" id="BSC-input" />
+		</p>
+
+	</div>
+	<div id="stratege-map">
+		<div class="level" id="Finance">
+			<h2>Финансы</h2>
+		</div>
+		<div class="level" id="Customers">
+			<h2>Клиенты</h2>
+		</div>
+		<div class="level" id="Process">
+			<h2>процессы Бизнес-</h2>
+		</div>
+		<div class="level" id="Development">
+			<h2>Развитие</h2>
+		</div>
+	</div>
+
+	<div id="bsc">
+		<header>
+			<span class="name"></span>
+			<span class="weight">Вес</span>
+			<span class="resultPercent">Процент выполнения</span>
+			<span class="fact">Факт</span>
+			<span class="plan">План</span>
+			<span class="indicator"></span>
+		</header>
+
+	</div>
+
+	<div id="graph">
+		<div id="main" style="width: 600px;height:350px;"></div>
+
+		<div id="form1">
+		<p style="color:#3D3E4D;font-size:20px">Отчетный период:</p>
+		<label for="start">Начало:</label>
+		<input style="border-color:#909DA2;padding-left:5px" type="date" id="start" name="trip-start"
+        value="2017-01-01"
+        min="2015-01-01" max="2018-12-31">
+		<p></p>
+		<label for="start">Конец: </label>
+		<input style="border-color:#909DA2;padding-left:5px" type="date" id="start" name="trip-start"
+        value="2019-06-20"
+        min="2015-01-01" max="2019-12-31">
+		</div>
+		
+		<div id="form2">
+	    <form name="myForm">
+		    <p style="color:#3D3E4D;font-size:20px">Метод прогноза:</p>
+		    <p><input id="ss" name="met" type="radio" value="nedzen"checked>Скользящее среднее</p>
+		    <p><input id="es" name="met" type="radio" value="dzen">Экспонециальное сглаживание</p>
+		    <p><input id="mnk" name="met" type="radio" value="pdzen">Метод наименьших квадратов</p>
+	    </form>
+	    </div>
+
+		<div id="form3">
+		<p style="color:#3D3E4D;font-size:20px">Длина прогноза:</p>
+		<form><input style="border-color:#909DA2; padding-left:5px" id="forecastLen" name= "Длина прогноза" type="number" min="0" value="3"></form>
+		<p><input type="button" id="drawGraf-2" value="Построить прогноз" style="width:300x;height:35px;color:#255F8F;border-color:#909DA2;font-weight:bold"></p>
+		</div>
+		</div>
+
+		<div id="data-table"></div>
+</div>
+
+<script>
+	document.getElementById('data-input').addEventListener('change', dataFileLoad, false);
+	document.getElementById('BSC-input').addEventListener('change', bscFileLoad, false);
+</script>
+
+</body>
+</html>

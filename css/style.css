@@ -1,0 +1,200 @@
+html,body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+#header {
+	width: 100%;
+	height: 20%;
+	overflow: scroll;
+	background: #eee;
+}
+#stratege-map-header, 
+#bsc-header, 
+#graph-header, 
+#data-table-header  {
+	display: none;
+}
+#header h1 span {
+	font-weight: normal;
+	color: #666;
+}
+#header h1 span.boldAndBlack {
+	font-weight: bold;
+	color: #000;
+}
+#header h1 span.hover:hover{
+	color: blue;
+	cursor: pointer;
+	text-decoration: underline;
+}
+#base {
+	width: 100%;
+	height: 80%;
+}
+
+/*stratege-map*/
+#stratege-map, 
+#bsc, 
+#graph, 
+#data-table {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	display: none;
+	overflow: scroll;
+	box-sizing: border-box;
+}
+#stratege-map div.level {
+	position: relative;
+	height: 25%;
+	width: 100%;
+	border-bottom: 1.5px solid #909DA2;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+		justify-content: center;
+}
+#stratege-map div.level h2 {
+	position: absolute;
+	left: 0;
+	transform: rotate(180deg);
+	writing-mode: vertical-lr;
+	height: 100%;
+	text-align: center;
+	font-size: 120%;
+	color: #292929;
+}
+#stratege-map div.level div {
+	flex: 1 0 0.05%;
+	overflow: hidden;
+	height: 70%;
+	max-width: 14%;
+	margin: 0 10px;
+	border-radius: 5px;
+	text-align: center;
+	font-family: Palatino Linotype;
+	position: relative;
+	border: 1px solid #909DA2;
+}
+#stratege-map div.level div p {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
+	padding: 0;
+}
+#stratege-map div.level div span {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	font-style: italic;
+	color: rgba(0,0,0,0.6);
+}
+#stratege-map div.level div.good {
+	background: #5AC0A4;
+}
+#stratege-map div.level div.normal {
+	background: #CDC100;
+}
+#stratege-map div.level div.bad {
+	background: #C93834;
+}
+
+/*bsc*/
+#bsc header {
+	height: 32px;
+}
+#bsc span {
+	padding-right: 10px;
+	text-align: center;
+}
+#bsc span.param {
+	color: blue;
+	text-decoration: underline;
+}
+#bsc span.param:hover {
+	text-decoration: none;
+	cursor: pointer;
+}
+#bsc span.indicator {
+	width: 4px;
+	float: right;
+	height: 14px;
+	margin-top: 2px;
+	border-radius: 9px;
+	overflow: hidden;
+}
+#bsc span.good {
+	background: #5AC0A4;
+	color: #5AC0A4;
+}
+#bsc span.normal {
+	background: #CDC100;
+	color: #CDC100;
+}
+#bsc span.bad {
+	background: #C93834;
+	color: #C93834;
+}
+#bsc span.plan,
+#bsc span.fact,
+#bsc span.resultPercent,
+#bsc span.weight {
+	width: 64px;
+	float: right;
+}
+#bsc ul {
+	list-style-type: none;
+}
+#bsc ul:first-child {
+	margin: 0;
+	padding: 0;
+}
+#bsc li {
+	width: 100%;
+	border-top: 1px solid #909DA2;
+	/*display: table;*/
+}
+#bsc .caret {
+	cursor: pointer; 
+	user-select: none;
+}
+#bsc .caret::before {
+	content: "\27A4";
+	color: #255F8F;
+	display: inline-block;
+	margin-right: 6px;
+	font-size: 17px;
+}
+#bsc .caret-down::before {
+	transform: rotate(90deg); 
+}
+#bsc .nested {
+	display: none;
+}
+#bsc .active {
+	display: block;
+}
+#form1 {
+  width: 15%;
+  display: inline-block;
+}
+#form2 {
+  width: 18%;
+  display: inline-block;
+  vertical-align: top;
+  padding-left:5px;
+  border-left: 1px solid #909DA2;
+  border-right: 1px solid #909DA2;
+}
+
+#form3 {
+  width: 15%;
+  display: inline-block;
+  vertical-align: top;
+}
